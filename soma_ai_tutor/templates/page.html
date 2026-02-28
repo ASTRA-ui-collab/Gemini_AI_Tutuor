@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block body %}
+  {% if active == 'ask' %}
+  <form method="post">
+    <label>Topic</label>
+    <input type="text" name="topic" placeholder="e.g. Health" required>
+    <label>Question</label>
+    <textarea name="question" rows="5" placeholder="Ask any detailed question..." required></textarea>
+    <button type="submit">Ask Tutor</button>
+  </form>
+  {% endif %}
+
+  {% if active == 'summarize' %}
+  <form method="post">
+    <label>Text</label>
+    <textarea name="text" rows="12" placeholder="Paste text to summarize..." required></textarea>
+    <button type="submit">Summarize</button>
+  </form>
+  {% endif %}
+
+  {% if active == 'quiz' %}
+  <form method="post">
+    <label>Topic</label>
+    <input type="text" name="topic" placeholder="e.g. Networking" required>
+    <button type="submit">Generate Quiz</button>
+  </form>
+  {% endif %}
+
+  {% if active == 'multimodal' %}
+  <form method="post" enctype="multipart/form-data">
+    <label>Mode</label>
+    <select name="mode">
+      <option value="image" {% if mode == 'image' %}selected{% endif %}>Analyze Image</option>
+      <option value="audio" {% if mode == 'audio' %}selected{% endif %}>Transcribe Lecture Audio</option>
+    </select>
+    <label>Upload File</label>
+    <input type="file" name="file" required>
+    <button type="submit">Run Multimodal</button>
+  </form>
+  {% endif %}
+
+  {% if active == 'access' %}
+  <p>This runs a lightweight per-model Gemini availability check.</p>
+  {% endif %}
+{% endblock %}

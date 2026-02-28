@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soma AI Tutor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h1>Soma AI</h1>
+      <p class="models">Models: {{ model_candidates|join(', ') }}</p>
+      <nav>
+        <a href="{{ url_for('ask_tutor') }}" class="{% if active == 'ask' %}active{% endif %}">1. Ask Tutor</a>
+        <a href="{{ url_for('summarize') }}" class="{% if active == 'summarize' %}active{% endif %}">2. Summarize Text</a>
+        <a href="{{ url_for('quiz') }}" class="{% if active == 'quiz' %}active{% endif %}">3. Generate Quiz</a>
+        <a href="{{ url_for('multimodal') }}" class="{% if active == 'multimodal' %}active{% endif %}">4. Analyze/Transcribe</a>
+        <a href="{{ url_for('check_access') }}" class="{% if active == 'access' %}active{% endif %}">5. Check Gemini Access</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <h2>{{ title }}</h2>
+      {% if error %}
+      <div class="error">{{ error }}</div>
+      {% endif %}
+      {% block body %}{% endblock %}
+      {% if result %}
+      <h3>Result</h3>
+      <pre class="result">{{ result }}</pre>
+      {% endif %}
+    </main>
+  </div>
+</body>
+</html>
