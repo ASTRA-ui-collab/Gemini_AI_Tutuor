@@ -9,9 +9,10 @@
 - Transcribe Lecture Audio (inside Multimodal)
 
 ## Setup
-1. Create `.env` in `soma_ai_tutor/`:
-   - `GOOGLE_API_KEY=...`
-   - Optional: `GEMINI_MODELS=gemini-2.5-flash-lite,gemini-2.0-flash-lite,gemini-2.0-flash`
+1. Create your local env file from the template:
+   - Copy `soma_ai_tutor/.env.example` to `soma_ai_tutor/.env`
+   - Set `GOOGLE_API_KEY` to your own key
+   - Optional: edit `GEMINI_MODELS=gemini-2.5-flash-lite,gemini-2.0-flash-lite,gemini-2.0-flash`
 2. Install dependencies:
    - `pip install -r requirements.txt`
 

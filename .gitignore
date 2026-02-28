@@ -1,0 +1,8 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Local secrets
+.env
+soma_ai_tutor/.env
